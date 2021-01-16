@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { Title, NumberDiv, MainDiv, NumbersDiv, ConvertButton } from './styles';
+import api from '../../services/api';
 
 const BinaryConversion: React.FC = () => {
   const [binaryNumber, setBinaryNumber] = useState('');
+  const [convertedNumber, setConvertedNumber] = useState('');
 
-  function handleClick() {
-    console.log(binaryNumber);
+  async function handleClick() {
+    const response = await api.get('binaries_conversion', {
+      params: {
+        binary: binaryNumber
+      }
+    })
+
+    setConvertedNumber(response.data.converted_number);
   }
 
   return(
@@ -13,12 +21,11 @@ const BinaryConversion: React.FC = () => {
       <MainDiv>
         <Title>Binary Conversion</Title>
         <NumbersDiv>
-          {/* <BinaryField /> */}
           <NumberDiv>
             <input type="text" onChange={(e) => setBinaryNumber(e.target.value)}/>
           </NumberDiv>
           <NumberDiv>
-            Decimal
+            {convertedNumber}
           </NumberDiv>
         </NumbersDiv>
         <ConvertButton type="submit" onClick={handleClick}>Convert</ConvertButton>
