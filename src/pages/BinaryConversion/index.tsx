@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Title, NumberDiv, MainDiv, NumbersDiv, ConvertButton } from './styles';
 
 const BinaryConversion: React.FC = () => {
+  const [binaryNumber, setBinaryNumber] = useState('');
+
+  function handleClick() {
+    console.log(binaryNumber);
+  }
+
   return(
     <>
       <MainDiv>
@@ -9,13 +15,13 @@ const BinaryConversion: React.FC = () => {
         <NumbersDiv>
           {/* <BinaryField /> */}
           <NumberDiv>
-            <input type="text" />
+            <input type="text" onChange={(e) => setBinaryNumber(e.target.value)}/>
           </NumberDiv>
           <NumberDiv>
             Decimal
           </NumberDiv>
         </NumbersDiv>
-        <ConvertButton type="submit">Convert</ConvertButton>
+        <ConvertButton type="submit" onClick={handleClick}>Convert</ConvertButton>
       </MainDiv>
     </>
   );
