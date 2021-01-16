@@ -26,9 +26,12 @@ export const NumberDiv = styled.div`
   background-color: fuchsia;
   display: flex;
   align-items:center;
+  font-size: 60px;
 
   input {
-    height: 60px;
+    height: 80px;
+    font-size: 20px;
+    text-align: center;
   }
 `;
 
@@ -39,6 +42,10 @@ export const MainDiv = styled.div`
   flex-direction: column;
   background-color: #edc99f;
   height: 600px;
+`;
+
+export const ErrorBox = styled.span`
+  color: #ff0000;
 `;
 
 export const ConvertButton = styled.button`
