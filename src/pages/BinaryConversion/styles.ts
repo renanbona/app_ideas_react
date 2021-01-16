@@ -44,6 +44,10 @@ export const MainDiv = styled.div`
   height: 600px;
 `;
 
+export const ErrorBox = styled.span`
+  color: #ff0000;
+`;
+
 export const ConvertButton = styled.button`
   text-transform: uppercase;
   color: #ffffff;

@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { Title, NumberDiv, MainDiv, NumbersDiv, ConvertButton } from './styles';
+import { Title, NumberDiv, MainDiv, NumbersDiv, ConvertButton, ErrorBox } from './styles';
 import api from '../../services/api';
 
 const BinaryConversion: React.FC = () => {
   const [binaryNumber, setBinaryNumber] = useState('');
   const [convertedNumber, setConvertedNumber] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   async function handleClick() {
-    const response = await api.get('binaries_conversion', {
+    await api.get('binaries_conversion', {
       params: {
         binary: binaryNumber
       }
+    }).then(response => {
+      setConvertedNumber(response.data.converted_number);
+      setErrorMessage('');
     })
-
-    setConvertedNumber(response.data.converted_number);
+    .catch(err => {
+      setErrorMessage(err.response.data.message);
+    })
   }
 
   return(
@@ -28,6 +33,7 @@ const BinaryConversion: React.FC = () => {
             {convertedNumber}
           </NumberDiv>
         </NumbersDiv>
+        <ErrorBox>{errorMessage}</ErrorBox>
         <ConvertButton type="submit" onClick={handleClick}>Convert</ConvertButton>
       </MainDiv>
     </>
