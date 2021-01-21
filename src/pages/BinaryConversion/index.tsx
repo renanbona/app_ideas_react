@@ -24,13 +24,15 @@ const BinaryConversion: React.FC = () => {
   return(
     <>
       <MainDiv>
-        <Title>Binary Conversion</Title>
+        <Title>Binary To Decimal Converter</Title>
         <NumbersDiv>
           <NumberDiv>
+            <span>Binary Input</span>
             <input type="text" onChange={(e) => setBinaryNumber(e.target.value)}/>
           </NumberDiv>
           <NumberDiv>
-            {convertedNumber}
+            <span>Decimal Output</span>
+            <input type="text" disabled value={convertedNumber}/>
           </NumberDiv>
         </NumbersDiv>
         <ErrorBox>{errorMessage}</ErrorBox>

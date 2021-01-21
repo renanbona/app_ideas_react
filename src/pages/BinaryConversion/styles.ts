@@ -14,7 +14,6 @@ export const BinaryField = styled.input`
 
 export const NumbersDiv = styled.div`
   display: flex;
-  background-color: aliceblue;
   justify-content: space-between;
   height: 240px;
   width: 600px;
@@ -23,10 +22,14 @@ export const NumbersDiv = styled.div`
 export const NumberDiv = styled.div`
   flex: 1;
   justify-content: center;
-  background-color: fuchsia;
   display: flex;
+  flex-direction: column;
   align-items:center;
-  font-size: 60px;
+
+  span {
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
 
   input {
     height: 80px;
@@ -40,12 +43,13 @@ export const MainDiv = styled.div`
   justify-content: space-around;
   display: flex;
   flex-direction: column;
-  background-color: #edc99f;
   height: 600px;
 `;
 
 export const ErrorBox = styled.span`
   color: #ff0000;
+  margin-top: -45px;
+  font-size: 36px;
 `;
 
 export const ConvertButton = styled.button`
