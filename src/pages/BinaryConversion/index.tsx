@@ -18,7 +18,19 @@ const BinaryConversion: React.FC = () => {
     })
     .catch(err => {
       setErrorMessage(err.response.data.message);
+      setConvertedNumber('');
     })
+  }
+
+  function handleBinaryInputChanges(binaryNumber: string) {
+    var validNumbers = /^[0-1]+$/;
+    setBinaryNumber(binaryNumber);
+    if(binaryNumber.match(validNumbers)) {
+      setErrorMessage('');
+    } else {
+      setErrorMessage('Enter either 0 or 1');
+      setConvertedNumber('');
+    }
   }
 
   return(
@@ -28,7 +40,7 @@ const BinaryConversion: React.FC = () => {
         <NumbersDiv>
           <NumberDiv>
             <span>Binary Input</span>
-            <input type="text" onChange={(e) => setBinaryNumber(e.target.value)}/>
+            <input type="text" onChange={(e) => handleBinaryInputChanges(e.target.value)}/>
           </NumberDiv>
           <NumberDiv>
             <span>Decimal Output</span>
